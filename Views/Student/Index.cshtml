@@ -1,0 +1,33 @@
+﻿@model System.Data.DataTable
+@{
+    ViewBag.Title = "Index";
+}
+
+<center><h2 style=" font-family: Cambria;"><b>Registered Students</b></h2></center>
+
+<table class="table" style=" font-family: Cambria; background-image: linear-gradient(to right, white, darkgray);">
+    <tr style="font-weight: bold;">
+        <td>Surname</td>
+        <td>Firstname</td>
+        <td>MI</td>
+        <td>Student_Number</td>
+        <td>Age</td>
+        <td>Address</td>
+    </tr>
+    @for (int i = 0; i < Model.Rows.Count; i++)
+    {
+        <tr>
+            <td>@Model.Rows[i][1]</td>
+            <td>@Model.Rows[i][2]</td>
+            <td>@Model.Rows[i][3]</td>
+            <td>@Model.Rows[i][4]</td>
+            <td>@Model.Rows[i][5]</td>
+            <td>@Model.Rows[i][6]</td>
+            <td><a href="@Url.Action("Edit","Student", new { @Id = Model.Rows[i][0] })">Update</a></td>
+            <td ><a href="@Url.Action("Delete","Student", new { @Id = Model.Rows[i][0] }) " style="color: red;">Delete</a></td>
+        </tr>
+    }
+</table>
+<div>
+    <a href="@Url.Action("Create","Student")">Add New Student</a>
+</div>
